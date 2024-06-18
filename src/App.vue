@@ -11,10 +11,13 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
-
+  <div style="color: #fff;">
+    {{ 'HEY' }}
   </div>
 </template>
 
-<style scoped>
+<style>
+body {
+  background: #303030;
+}
 </style>
