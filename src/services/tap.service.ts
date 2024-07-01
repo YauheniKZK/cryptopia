@@ -11,6 +11,14 @@ export const createUser = async () => {
         return res
     }
 }
+export const activatedUser = async () => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/api/activate-user`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}
 export const getUserService = async () => {
     if (WebApp) {
         const url = `${Config.REST_SERVER}/api/all-users`

@@ -3,10 +3,11 @@ import { onMounted } from 'vue';
 import { useAppStore } from './stores/app';
 
 const appStore = useAppStore()
-const { getUser, actionCreateUser } = appStore
+const { getUser, actionCreateUser, actionActivatedUser } = appStore
 
 onMounted(async () => {
   await actionCreateUser()
+  await actionActivatedUser()
   await getUser()
 })
 </script>
