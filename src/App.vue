@@ -13,7 +13,9 @@ onMounted(async () => {
 
 <template>
   <div style="color: #fff;">
-    {{ 'HEY' }}
+    <div>
+      <span>{{ 'Hey friends. How are you&' }}</span>
+    </div>
   </div>
 </template>
 
