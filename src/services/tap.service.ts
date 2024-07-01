@@ -5,7 +5,7 @@ import WebApp from '@twa-dev/sdk'
 
 export const createUser = async () => {
     if (WebApp) {
-        const url = `${Config.REST_SERVER}/api/create-user`
+        const url = `${Config.REST_SERVER}/api/check-user`
         const res = await api.get(url)
         console.log('res', res)    
         return res
