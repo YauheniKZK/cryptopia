@@ -8,6 +8,7 @@ import App from './App.vue'
 import router from './router'
 
 WebApp.ready()
+WebApp.expand()
 const app = createApp(App)
 
 app.use(createPinia())
