@@ -19,7 +19,7 @@ const interval = ref<any>()
 //board
 const board = ref();
 const boardWidth = ref(window.innerWidth);
-const boardHeight = ref(window.innerHeight - ((WebApp.viewportStableHeight / 100) * 26));
+const boardHeight = ref(WebApp.viewportStableHeight - ((WebApp.viewportStableHeight / 100) * 26));
 const context = ref();
 
 //bird
@@ -225,7 +225,7 @@ onMounted(() => {
     console.log('window.innerHeight', window.innerHeight)
     console.log('WebApp.viewportStableHeight', WebApp.viewportStableHeight)
     // board = document.getElementById("board");
-    board.value.height = window.innerHeight - ((WebApp.viewportStableHeight / 100) * 26);
+    board.value.height = WebApp.viewportStableHeight - ((WebApp.viewportStableHeight / 100) * 26);
     board.value.width = window.innerWidth;
     context.value = board.value.getContext("2d"); //used for drawing on the board
 
