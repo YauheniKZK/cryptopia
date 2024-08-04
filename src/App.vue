@@ -155,6 +155,7 @@ function moveBird() {
             bird.value.y = birdY.value;
             pipeArray.value = [];
             score.value = 0;
+            WebApp.HapticFeedback.impactOccurred('heavy')
             gameOver.value = false;
         }
     } else {
@@ -173,6 +174,7 @@ function moveBird() {
             bird.value.y = birdY.value;
             pipeArray.value = [];
             score.value = 0;
+            WebApp.HapticFeedback.impactOccurred('heavy')
             gameOver.value = false;
         }
     } else {
