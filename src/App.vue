@@ -18,8 +18,8 @@ const interval = ref<any>()
 
 //board
 const board = ref();
-const boardWidth = ref(360);
-const boardHeight = ref(640);
+const boardWidth = ref(window.innerWidth);
+const boardHeight = ref(window.innerHeight - ((WebApp.viewportStableHeight / 100) * 26));
 const context = ref();
 
 //bird
