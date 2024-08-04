@@ -102,7 +102,7 @@ function update() {
     // score
     context.value.fillStyle = "white";
     context.value.font = "45px sans-serif";
-    context.value.fillText(score, 5, 45);
+    context.value.fillText(score.value, 5, 45);
 
     if (gameOver.value) {
         context.value.fillText("GAME OVER", 5, 90);
@@ -223,7 +223,7 @@ onMounted(() => {
     console.log('window.innerWidth', window.innerWidth)
     console.log('window.innerHeight', window.innerHeight)
     // board = document.getElementById("board");
-    board.value.height = window.innerHeight;
+    board.value.height = window.innerHeight - ((window.innerHeight / 100) * 20);
     board.value.width = window.innerWidth;
     context.value = board.value.getContext("2d"); //used for drawing on the board
 
@@ -262,12 +262,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen relative">
-    <div class="flex absolute top-[32px] right-[32px]">
+  <div class="flex flex-col h-screen relative main-container">
+    <div class="flex absolute top-[32px] right-[32px] text-[#fff]">
       {{ 'Ver:' + versionApp }}
     </div>
-    <canvas ref="board"></canvas>
-    <div class="flex absolute flex-col bottom-0 left-0 h-[200px] z-[111] w-full">
+    <div class="container-canvas">
+        <canvas ref="board"></canvas>
+    </div>
+    <div class="flex flex-col h-[20%] z-[111] w-full bg-[#a52a2a]">
       <div class="bg-[#ffffff5b] w-full h-1/2 action-block" @touchstart="e => moveBirdActionStart(e, 'up')" @touchend="e => moveBirdActionEnd(e, 'up')">
 
       </div>

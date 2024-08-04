@@ -3,10 +3,29 @@
 @tailwind utilities;
 
 #app {
-  max-width: 1280px;
+  max-width: 600px;
   margin: 0 auto;
   font-weight: normal;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none; /* Запрещаем выделение */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.container-canvas {
   background: url('./images/bg-fon.jpg') left top;
   background-size: cover;
-  overflow: hidden;
+  user-select: none; /* Запрещаем выделение */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+#app > * {
+  user-select: none; /* Запрещаем выделение */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
