@@ -116,7 +116,7 @@ function placePipes() {
     // 0 -> -128 (pipeHeight/4)
     // 1 -> -128 - 256 (pipeHeight/4 - pipeHeight/2) = -3/4 pipeHeight
     let randomPipeY = pipeY.value - pipeHeight.value/4 - Math.random()*(pipeHeight.value/2);
-    let openingSpace = board.value?.height/8;
+    let openingSpace = board.value?.height/10;
 
     let topPipe = {
         img : topPipeImg.value,
@@ -143,7 +143,7 @@ function moveBird() {
     if (typeMove.value === 'up' && moveUp.value) {
         //jump
         // velocityY.value = -1;
-        speed.value = Math.min((speed.value + acceleration.value) * 1.2, maxSpeed.value)
+        speed.value = Math.min((speed.value + acceleration.value), maxSpeed.value)
         angle.value += Number(Math.min(angle.value + rotationSpeed.value, rotationAngle.value) * -1)
         // angle.value = -rotationAngle.value
         //reset game
@@ -159,7 +159,7 @@ function moveBird() {
         velocityY.value = 0;
     }
     if (typeMove.value === 'down' && moveUp.value) {
-        speed.value = Math.min((speed.value + acceleration.value) * 1.2, maxSpeed.value)
+        speed.value = Math.min((speed.value + acceleration.value), maxSpeed.value)
         // angle.value = rotationAngle.value
         angle.value = Math.min(angle.value + rotationSpeed.value, rotationAngle.value)
         //jump
@@ -263,7 +263,7 @@ onMounted(() => {
   <div class="flex flex-col h-screen relative">
     <canvas ref="board"></canvas>
     <div class="flex absolute flex-col bottom-0 left-0 h-[200px] z-[111] w-full">
-      <div class="bg-[#ffffff5b] w-full h-1/2" @touchstart="e => moveBirdActionStart(e, 'up')" @touchend="e => moveBirdActionEnd(e, 'up')">
+      <div class="bg-[#ffffff5b] w-full h-1/2 action-block" @touchstart="e => moveBirdActionStart(e, 'up')" @touchend="e => moveBirdActionEnd(e, 'up')">
 
       </div>
       <div class="bg-[#fff3] w-full h-1/2" @touchstart="e => moveBirdActionStart(e, 'down')" @touchend="e => moveBirdActionEnd(e, 'down')">
@@ -277,5 +277,12 @@ onMounted(() => {
 .item-block {
   transition: all .2s ease-in-out;
   transform-origin: top;
+}
+
+.action-block {
+  user-select: none; /* Запрещаем выделение */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 </style>
