@@ -116,7 +116,7 @@ function placePipes() {
     // 0 -> -128 (pipeHeight/4)
     // 1 -> -128 - 256 (pipeHeight/4 - pipeHeight/2) = -3/4 pipeHeight
     let randomPipeY = pipeY.value - pipeHeight.value/4 - Math.random()*(pipeHeight.value/2);
-    let openingSpace = board.value?.height/4;
+    let openingSpace = board.value?.height/8;
 
     let topPipe = {
         img : topPipeImg.value,
@@ -243,7 +243,7 @@ onMounted(() => {
     bottomPipeImg.value.src = getImageUrl('images/bottompipe.png');
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 1500); //every 1.5 seconds
+    setInterval(placePipes, 2000); //every 1.5 seconds
     // document.addEventListener("keydown", moveBirdActionStart);
     // document.addEventListener("keyup", moveBirdActionEnd);
   }
