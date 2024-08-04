@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { getImageUrl } from '@/utils/images'
+import WebApp from '@twa-dev/sdk'
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
@@ -222,8 +223,9 @@ onMounted(() => {
   if (board.value) {
     console.log('window.innerWidth', window.innerWidth)
     console.log('window.innerHeight', window.innerHeight)
+    console.log('WebApp.viewportStableHeight', WebApp.viewportStableHeight)
     // board = document.getElementById("board");
-    board.value.height = window.innerHeight - ((window.innerHeight / 100) * 20);
+    board.value.height = window.innerHeight - ((WebApp.viewportStableHeight / 100) * 20);
     board.value.width = window.innerWidth;
     context.value = board.value.getContext("2d"); //used for drawing on the board
 
