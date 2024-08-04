@@ -2,10 +2,12 @@
 import { onMounted, ref } from 'vue';
 import { getImageUrl } from '@/utils/images'
 
+const versionApp = import.meta.env.PACKAGE_VERSION
+
 const moveUp = ref(false)
 const typeMove = ref('up')
 const speed = ref(0);
-const acceleration = ref(0.02);
+const acceleration = ref(0.1);
 const maxSpeed = ref(10);
 const angle = ref(0)
 const rotationAngle = ref(25 * Math.PI / 180);
@@ -261,6 +263,9 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col h-screen relative">
+    <div class="flex absolute top-[32px] right-[32px]">
+      {{ 'Ver:' + versionApp }}
+    </div>
     <canvas ref="board"></canvas>
     <div class="flex absolute flex-col bottom-0 left-0 h-[200px] z-[111] w-full">
       <div class="bg-[#ffffff5b] w-full h-1/2 action-block" @touchstart="e => moveBirdActionStart(e, 'up')" @touchend="e => moveBirdActionEnd(e, 'up')">
