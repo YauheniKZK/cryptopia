@@ -4,12 +4,14 @@ import { getImageUrl } from '@/utils/images'
 
 const moveUp = ref(false)
 const typeMove = ref('up')
-const speed = ref(2);
-const acceleration = ref(0.1);
+const speed = ref(1);
+const acceleration = ref(0.02);
 const maxSpeed = ref(10);
 const angle = ref(0)
 const rotationAngle = ref(25 * Math.PI / 180);
 const rotationSpeed = ref(0.2)
+
+const interval = ref<any>()
 
 //board
 const board = ref();
@@ -181,15 +183,19 @@ function moveBirdActionStart(e: any, type: string) {
     if (type == "up") {
         moveUp.value = true
         typeMove.value = 'up'
+        interval.value = setInterval(moveBird, 16)
     }
     if (type == "down") {
         moveUp.value = true
         typeMove.value = 'down'
+        interval.value = setInterval(moveBird, 16)
     }
-    moveBird()
+    // moveBird()
+    
 }
 
 function moveBirdActionEnd(e: any, type: string) {
+  clearInterval(interval.value)
     speed.value = Math.max(speed.value - acceleration.value, 0)
     angle.value = 0
     if (type == "up") {
