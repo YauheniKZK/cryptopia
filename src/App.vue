@@ -186,10 +186,12 @@ function moveBirdActionStart(e: any, type: string) {
     if (type == "up") {
         moveUp.value = true
         typeMove.value = 'up'
+        WebApp.HapticFeedback.impactOccurred('medium')
         interval.value = setInterval(moveBird, 16)
     }
     if (type == "down") {
         moveUp.value = true
+        WebApp.HapticFeedback.impactOccurred('light')
         typeMove.value = 'down'
         interval.value = setInterval(moveBird, 16)
     }
