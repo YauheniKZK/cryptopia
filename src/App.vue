@@ -116,7 +116,7 @@ function placePipes() {
     // 0 -> -128 (pipeHeight/4)
     // 1 -> -128 - 256 (pipeHeight/4 - pipeHeight/2) = -3/4 pipeHeight
     let randomPipeY = pipeY.value - pipeHeight.value/4 - Math.random()*(pipeHeight.value/2);
-    let openingSpace = board.value?.height/10;
+    let openingSpace = board.value?.height/12;
 
     let topPipe = {
         img : topPipeImg.value,
@@ -196,7 +196,7 @@ function moveBirdActionStart(e: any, type: string) {
 
 function moveBirdActionEnd(e: any, type: string) {
   clearInterval(interval.value)
-    speed.value = Math.max(speed.value - acceleration.value, 0)
+    speed.value = 0
     angle.value = 0
     if (type == "up") {
         moveUp.value = false
