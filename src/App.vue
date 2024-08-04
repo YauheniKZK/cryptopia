@@ -257,10 +257,10 @@ onMounted(() => {
   <div class="flex flex-col h-screen relative">
     <canvas ref="board"></canvas>
     <div class="flex absolute flex-col bottom-0 left-0 h-[200px] z-[111] w-full">
-      <div class="bg-[#ffffff5b] w-full h-1/2" @touchstart="e => moveBirdActionStart(e, 'up')">
+      <div class="bg-[#ffffff5b] w-full h-1/2" @touchstart="e => moveBirdActionStart(e, 'up')" @touchend="e => moveBirdActionEnd(e, 'up')">
 
       </div>
-      <div class="bg-[#fff3] w-full h-1/2" @touchstart="e => moveBirdActionStart(e, 'down')">
+      <div class="bg-[#fff3] w-full h-1/2" @touchstart="e => moveBirdActionStart(e, 'down')" @touchend="e => moveBirdActionEnd(e, 'down')">
 
       </div>
     </div>
