@@ -225,7 +225,7 @@ onMounted(() => {
     console.log('window.innerHeight', window.innerHeight)
     console.log('WebApp.viewportStableHeight', WebApp.viewportStableHeight)
     // board = document.getElementById("board");
-    board.value.height = window.innerHeight - ((WebApp.viewportStableHeight / 100) * 20);
+    board.value.height = window.innerHeight - ((WebApp.viewportStableHeight / 100) * 26);
     board.value.width = window.innerWidth;
     context.value = board.value.getContext("2d"); //used for drawing on the board
 
@@ -264,14 +264,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen relative main-container">
+  <div class="flex flex-col h-full relative main-container">
     <div class="flex absolute top-[32px] right-[32px] text-[#fff]">
       {{ 'Ver:' + versionApp }}
     </div>
     <div class="container-canvas">
         <canvas ref="board"></canvas>
     </div>
-    <div class="flex flex-col h-[20%] z-[111] w-full bg-[#a52a2a]">
+    <div class="flex flex-col h-[26%] z-[111] w-full bg-[#a52a2a]">
       <div class="bg-[#ffffff5b] w-full h-1/2 action-block" @touchstart="e => moveBirdActionStart(e, 'up')" @touchend="e => moveBirdActionEnd(e, 'up')">
 
       </div>
