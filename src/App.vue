@@ -4,7 +4,7 @@ import { getImageUrl } from '@/utils/images'
 
 const moveUp = ref(false)
 const typeMove = ref('up')
-const speed = ref(1);
+const speed = ref(0);
 const acceleration = ref(0.02);
 const maxSpeed = ref(10);
 const angle = ref(0)
@@ -143,7 +143,7 @@ function moveBird() {
     if (typeMove.value === 'up' && moveUp.value) {
         //jump
         // velocityY.value = -1;
-        speed.value = Math.min((speed.value + acceleration.value) * 2, maxSpeed.value)
+        speed.value = Math.min((speed.value + acceleration.value) * 1.2, maxSpeed.value)
         angle.value += Number(Math.min(angle.value + rotationSpeed.value, rotationAngle.value) * -1)
         // angle.value = -rotationAngle.value
         //reset game
@@ -159,7 +159,7 @@ function moveBird() {
         velocityY.value = 0;
     }
     if (typeMove.value === 'down' && moveUp.value) {
-        speed.value = Math.min((speed.value + acceleration.value) * 2, maxSpeed.value)
+        speed.value = Math.min((speed.value + acceleration.value) * 1.2, maxSpeed.value)
         // angle.value = rotationAngle.value
         angle.value = Math.min(angle.value + rotationSpeed.value, rotationAngle.value)
         //jump
