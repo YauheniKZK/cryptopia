@@ -176,26 +176,27 @@ function moveBird() {
     }
 }
 
-function moveBirdActionStart(e: any) {
-    if (e.code == "ArrowUp") {
+function moveBirdActionStart(e: any, type: string) {
+    console.log('11111111')
+    if (type == "up") {
         moveUp.value = true
         typeMove.value = 'up'
     }
-    if (e.code == "ArrowDown") {
+    if (type == "down") {
         moveUp.value = true
         typeMove.value = 'down'
     }
     moveBird()
 }
 
-function moveBirdActionEnd(e: any) {
+function moveBirdActionEnd(e: any, type: string) {
     speed.value = Math.max(speed.value - acceleration.value, 0)
     angle.value = 0
-    if (e.code == "ArrowUp") {
+    if (type == "up") {
         moveUp.value = false
         typeMove.value = 'up'
     }
-    if (e.code == "ArrowDown") {
+    if (type == "down") {
         moveUp.value = false
         typeMove.value = 'up'
     }
@@ -237,16 +238,32 @@ onMounted(() => {
 
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); //every 1.5 seconds
-    document.addEventListener("keydown", moveBirdActionStart);
-    document.addEventListener("keyup", moveBirdActionEnd);
+    // document.addEventListener("keydown", moveBirdActionStart);
+    // document.addEventListener("keyup", moveBirdActionEnd);
   }
 
 })
+
+// const moveUpAc = () => {
+
+// }
+
+// const moveDownAc = () => {
+  
+// }
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col h-screen relative">
     <canvas ref="board"></canvas>
+    <div class="flex absolute flex-col bottom-0 left-0 h-[200px] z-[111] w-full">
+      <div class="bg-[#ffffff5b] w-full h-1/2" @touchstart="e => moveBirdActionStart(e, 'up')">
+
+      </div>
+      <div class="bg-[#fff3] w-full h-1/2" @touchstart="e => moveBirdActionStart(e, 'down')">
+
+      </div>
+    </div>
   </div>
 </template>
 
