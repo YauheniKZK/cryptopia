@@ -5,6 +5,9 @@ import WebApp from '@twa-dev/sdk'
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
+const isActiveTopBtn = ref(false)
+const isActiveBottomBtn = ref(false)
+
 const moveUp = ref(false)
 const typeMove = ref('up')
 const speed = ref(0);
@@ -194,12 +197,16 @@ function moveBird() {
 function moveBirdActionStart(e: any, type: string) {
     console.log('11111111')
     if (type == "up") {
+        isActiveBottomBtn.value = false
+        isActiveTopBtn.value = true
         moveUp.value = true
         typeMove.value = 'up'
         WebApp.HapticFeedback.impactOccurred('medium')
         interval.value = setInterval(moveBird, 16)
     }
     if (type == "down") {
+        isActiveBottomBtn.value = true
+        isActiveTopBtn.value = false
         moveUp.value = true
         WebApp.HapticFeedback.impactOccurred('light')
         typeMove.value = 'down'
@@ -213,6 +220,8 @@ function moveBirdActionEnd(e: any, type: string) {
   clearInterval(interval.value)
     speed.value = 0
     angle.value = 0
+    isActiveBottomBtn.value = false
+    isActiveTopBtn.value = false
     if (type == "up") {
         moveUp.value = false
         typeMove.value = 'up'
@@ -259,7 +268,7 @@ onMounted(() => {
     bottomPipeImg.value.src = getImageUrl('images/bottompipe.png');
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 2500); //every 1.5 seconds
+    setInterval(placePipes, 2200); //every 1.5 seconds
     // document.addEventListener("keydown", moveBirdActionStart);
     // document.addEventListener("keyup", moveBirdActionEnd);
   }
@@ -284,12 +293,18 @@ onMounted(() => {
         <canvas ref="board"></canvas>
     </div>
     <div class="flex flex-col h-[26%] z-[111] w-full bg-[#a52a2a]">
-      <div class="bg-[#ffffff5b] w-full h-1/2 action-block" @touchstart="e => moveBirdActionStart(e, 'up')" @touchend="e => moveBirdActionEnd(e, 'up')">
-
-      </div>
-      <div class="bg-[#fff3] w-full h-1/2" @touchstart="e => moveBirdActionStart(e, 'down')" @touchend="e => moveBirdActionEnd(e, 'down')">
-
-      </div>
+        <div
+            class="bg-[#ffffff5b] w-full h-1/2 action-block"
+            :class="isActiveTopBtn ? 'active-btn' : ''"
+            @touchstart="e => moveBirdActionStart(e, 'up')"
+            @touchend="e => moveBirdActionEnd(e, 'up')"
+        ></div>
+        <div
+            class="bg-[#fff3] w-full h-1/2"
+            :class="isActiveBottomBtn ? 'active-btn' : ''"
+            @touchstart="e => moveBirdActionStart(e, 'down')"
+            @touchend="e => moveBirdActionEnd(e, 'down')"
+        ></div>
     </div>
   </div>
 </template>
@@ -305,5 +320,9 @@ onMounted(() => {
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.active-btn {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 </style>
