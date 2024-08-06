@@ -23,8 +23,8 @@ const boardHeight = ref(WebApp.viewportStableHeight - ((WebApp.viewportStableHei
 const context = ref();
 
 //bird
-const birdWidth = ref(36); //width/height ratio = 408/228 = 17/12
-const birdHeight = ref(26);
+const birdWidth = ref(52); //width/height ratio = 408/228 = 17/12
+const birdHeight = ref(36);
 const birdX = ref(boardWidth.value/8);
 const birdY = ref(boardHeight.value/2);
 const birdImg = ref();
