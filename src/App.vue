@@ -38,8 +38,8 @@ const bird = ref({
 
 //pipes
 const pipeArray = ref<any>([]);
-const pipeWidth = ref(64); //width/height ratio = 384/3072 = 1/8
-const pipeHeight = ref(512);
+const pipeWidth = ref(74); //width/height ratio = 384/3072 = 1/8
+const pipeHeight = ref(516);
 const pipeX = ref(boardWidth.value);
 const pipeY = ref(0);
 
