@@ -130,7 +130,7 @@ function placePipes() {
     // 1 -> -128 - 256 (pipeHeight/4 - pipeHeight/2) = -3/4 pipeHeight
     let randomPipeY = pipeY.value - pipeHeight.value/4 - Math.random()*(pipeHeight.value/2);
     console.log('getRandomInRange(34, 2, 2)', getRandomInRange(14, 2, 2))
-    let openingSpace = board.value?.height/getRandomInRange(8, 3, 6);
+    let openingSpace = board.value?.height/getRandomInRange(8, 1, 6);
     console.log('openingSpace', openingSpace)
     let topPipe = {
         img : topPipeImg.value,
@@ -331,7 +331,7 @@ onMounted(() => {
 .button-30 {
   align-items: center;
   appearance: none;
-  background-color: #efeff1;
+  background-color: #a9a9aa;
   border-radius: 4px;
   border-width: 0;
   box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
