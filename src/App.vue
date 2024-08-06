@@ -130,7 +130,7 @@ function placePipes() {
     // 1 -> -128 - 256 (pipeHeight/4 - pipeHeight/2) = -3/4 pipeHeight
     let randomPipeY = pipeY.value - pipeHeight.value/4 - Math.random()*(pipeHeight.value/2);
     console.log('getRandomInRange(34, 2, 2)', getRandomInRange(14, 2, 2))
-    let openingSpace = board.value?.height/getRandomInRange(8, 6, 6);
+    let openingSpace = board.value?.height/getRandomInRange(8, 3, 6);
     console.log('openingSpace', openingSpace)
     let topPipe = {
         img : topPipeImg.value,
@@ -294,17 +294,17 @@ onMounted(() => {
     </div>
     <div class="flex flex-col h-[26%] z-[111] w-full bg-[#a52a2a]">
         <div
-            class="bg-[#ffffff5b] w-full h-1/2 action-block"
+            class="bg-[#ffffff5b] w-full h-1/2 action-block button-30"
             :class="isActiveTopBtn ? 'active-btn' : ''"
             @touchstart="e => moveBirdActionStart(e, 'up')"
             @touchend="e => moveBirdActionEnd(e, 'up')"
-        ></div>
+        >{{ 'UP' }}</div>
         <div
-            class="bg-[#fff3] w-full h-1/2"
+            class="bg-[#fff3] w-full h-1/2 action-block button-30"
             :class="isActiveBottomBtn ? 'active-btn' : ''"
             @touchstart="e => moveBirdActionStart(e, 'down')"
             @touchend="e => moveBirdActionEnd(e, 'down')"
-        ></div>
+        >{{ 'DOWN' }}</div>
     </div>
   </div>
 </template>
@@ -315,7 +315,8 @@ onMounted(() => {
   transform-origin: top;
 }
 
-.action-block {
+.action-block,
+.action-block * {
   user-select: none; /* Запрещаем выделение */
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -324,5 +325,50 @@ onMounted(() => {
 
 .active-btn {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* CSS */
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #efeff1;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
 }
 </style>
