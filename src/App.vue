@@ -251,7 +251,7 @@ onMounted(() => {
     bottomPipeImg.value.src = getImageUrl('images/bottompipe.png');
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 2000); //every 1.5 seconds
+    setInterval(placePipes, 2500); //every 1.5 seconds
     // document.addEventListener("keydown", moveBirdActionStart);
     // document.addEventListener("keyup", moveBirdActionEnd);
   }
