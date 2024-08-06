@@ -110,17 +110,25 @@ function update() {
     }
 }
 
+function getRandomInRange(base: number, upperOffset: number, lowerOffset: number) {
+  const min = base - lowerOffset;
+  const max = base + upperOffset;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function placePipes() {
     if (gameOver.value) {
         return;
     }
 
+    
     //(0-1) * pipeHeight/2.
     // 0 -> -128 (pipeHeight/4)
     // 1 -> -128 - 256 (pipeHeight/4 - pipeHeight/2) = -3/4 pipeHeight
     let randomPipeY = pipeY.value - pipeHeight.value/4 - Math.random()*(pipeHeight.value/2);
-    let openingSpace = board.value?.height/14;
-
+    console.log('getRandomInRange(34, 2, 2)', getRandomInRange(14, 2, 2))
+    let openingSpace = board.value?.height/getRandomInRange(8, 4, 4);
+    console.log('openingSpace', openingSpace)
     let topPipe = {
         img : topPipeImg.value,
         x : pipeX.value,
